@@ -1,0 +1,855 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>martingale</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+/* 
+ This document has been created with Marked.app <http://markedapp.com>, Copyright 2011 Brett Terpstra
+ Please leave this notice in place, along with any additional credits below.
+ ---------------------------------------------------------------
+ SwissStyle by Brett Terpstra
+ */
+
+body
+{
+    -webkit-font-smoothing:antialiased;
+    font:normal .8764em/1.5em Arial,Verdana,sans-serif;
+    margin:0
+}
+
+html>body
+{
+    font-size:13px
+}
+
+li
+{
+    font-size:110%
+}
+
+li li
+{
+    font-size:100%
+}
+
+li p
+{
+    font-size:100%;
+    margin:.5em 0
+}
+
+h1
+{
+    color:#000;
+    font-size:2.2857em;
+    line-height:.6563em;
+    margin:.6563em 0
+}
+
+h2
+{
+    color:#111;
+    font-size:1.7143em;
+    line-height:.875em;
+    margin:.875em 0
+}
+
+h3
+{
+    color:#111;
+    font-size:1.5em;
+    line-height:1em;
+    margin:1em 0
+}
+
+h4
+{
+    color:#111;
+    font-size:1.2857em;
+    line-height:1.1667em;
+    margin:1.1667em 0
+}
+
+h6
+{
+    font-size:1em;
+    line-height:1.5em;
+    margin:1.5em 0
+}
+
+body,p,td,div
+{
+    color:#111;
+    font-family:Helvetica,Arial,sans-serif;
+    word-wrap:break-word
+}
+
+h1,h2,h3,h4,h5,h6
+{
+    line-height:1.5em
+}
+
+a
+{
+    -webkit-transition:color .2s ease-in-out;
+    color:#0d6ea1;
+    text-decoration:none
+}
+
+a:hover
+{
+    color:#3593d9
+}
+
+h2 em
+{
+    color:#111;
+    padding-left:10px;
+    text-shadow:0 1px 0 #FFF
+}
+
+.footnote
+{
+    color:#0d6ea1;
+    font-size:.8em;
+    vertical-align:super
+}
+
+#wrapper img
+{
+    max-width:100%
+}
+
+dd
+{
+    margin-bottom:1em
+}
+
+li > p:first-child
+{
+    margin:0
+}
+
+ul ul,ul ol
+{
+    margin-bottom:.4em
+}
+
+caption,col,colgroup,table,tbody,td,tfoot,th,thead,tr
+{
+    border-spacing:0
+}
+
+table
+{
+    border:1px solid rgba(0,0,0,0.25);
+    border-collapse:collapse;
+    display:table;
+    empty-cells:hide;
+    margin:-1px 0 23px;
+    padding:0;
+    table-layout:fixed
+}
+
+caption
+{
+    display:table-caption;
+    font-weight:700
+}
+
+col
+{
+    display:table-column
+}
+
+colgroup
+{
+    display:table-column-group
+}
+
+tbody
+{
+    display:table-row-group
+}
+
+tfoot
+{
+    display:table-footer-group
+}
+
+thead
+{
+    display:table-header-group
+}
+
+td,th
+{
+    display:table-cell
+}
+
+tr
+{
+    display:table-row
+}
+
+table th,table td
+{
+    font-size:1.1em;
+    line-height:23px;
+    padding:0 1em
+}
+
+table thead
+{
+    background:rgba(0,0,0,0.15);
+    border:1px solid rgba(0,0,0,0.15);
+    border-bottom:1px solid rgba(0,0,0,0.2)
+}
+
+table tbody
+{
+    background:rgba(0,0,0,0.05)
+}
+
+table tfoot
+{
+    background:rgba(0,0,0,0.15);
+    border:1px solid rgba(0,0,0,0.15);
+    border-top:1px solid rgba(0,0,0,0.2)
+}
+
+figure
+{
+    display:inline-block;
+    margin-bottom:1.2em;
+    position:relative
+}
+
+figcaption
+{
+    -webkit-transition:all .2s ease-in-out;
+    background:rgba(0,0,0,0);
+    bottom:0;
+    color:rgba(255,255,255,0);
+    left:0;
+    position:absolute;
+    text-align:center;
+    width:100%
+}
+
+figure:hover
+{
+    cursor:pointer
+}
+
+figcaption:hover
+{
+    background:rgba(0,0,0,.56);
+    color:rgba(255,255,255,1)
+}
+
+.poetry pre
+{
+    display:block;
+    font-family:Georgia, Garamond, serif!important;
+    font-size:110%!important;
+    font-style:italic;
+    line-height:1.6em;
+    margin-left:1em
+}
+
+.poetry pre code
+{
+    font-family:Georgia, Garamond, serif!important
+}
+
+sup,sub,a.footnote
+{
+    font-size:1.4ex;
+    height:0;
+    line-height:1;
+    position:relative;
+    vertical-align:super
+}
+
+sub {
+    vertical-align: sub;
+    top: -1px;
+}
+
+p,h5
+{
+    font-size:1.1429em;
+    line-height:1.3125em;
+    margin:1.3125em 0
+}
+
+dt,th
+{
+    font-weight:700
+}
+
+table tr:nth-child(odd),table th:nth-child(odd),table td:nth-child(odd)
+{
+    background:rgba(255,255,255,0.06)
+}
+
+table tr:nth-child(even),table td:nth-child(even)
+{
+    background:rgba(0,0,0,0.06)
+}
+
+@media print {
+    body
+    {
+        overflow:auto
+    }
+    
+    #wrapper
+    {
+        background:#fff;
+        color:#303030;
+        font-size:85%;
+        padding:10px;
+        position:relative;
+        text-indent:0
+    }
+}
+
+@media screen {
+    .inverted {
+        background:#333
+    }
+    
+    .inverted p,.inverted td,.inverted li,.inverted h1,.inverted h2,.inverted h3,.inverted h4,.inverted h5,.inverted h6,.inverted pre,.inverted code,.inverted th
+    {
+        color:#eee!important
+    }
+    
+    .inverted a
+    {
+        color:#fff;
+        text-decoration:underline
+    }
+    
+    #wrapper
+    {
+        padding:20px
+    }
+    
+    .inverted #wrapper
+    {
+        background:#333;
+    }
+}
+</style>
+
+</head>
+<body class="normal">
+  <div id="wrapper">
+      <h1 id="canyoumakemoneywiththemartingale">Can you make money with the Martingale?</h1>
+
+<p>This page presents the martingale betting system for the roulette casino game. It analyzes with hard number the systems and determines whether you can reliably make money at the roulette with it.</p>
+
+<h1 id="whatistheroulette">What is the roulette?</h1>
+
+<figure>
+<img src="roulette.jpg" alt="" /></figure>
+
+
+
+<p>The roulette is a casino game dating back to the 17th century. A ball is rolled by the croupier into a spinning wheel and ends up into one of the 37 pockets numbered 0 to 36. Each number possesses a red or black color except the zero which is green.</p>
+
+<figure>
+<img src="rouletteLayout.jpg" alt="" /></figure>
+
+
+
+<p>A number of bets can be made as to where the ball will end up: a specific number, a small group of related numbers, an even or odd number (pair, impair), a number between 1&#8211;18 (manque), a number between 19&#8211;36 (passe), a red or black number. The martingale uses the red or black bets exclusively.</p>
+
+<p>There exists a number of variations to this game but this article will focuses on the French roulette, also known as the European roulette. A popular variant is the American roulette with two zeros which makes your odds of winning lower. We will assume a minimum bet of 1 and no maximum. Some casino have minimum and maximum (eg.: minimum 3 and maximum 500). </p>
+
+<p><a name="houseEdge"></a>
+The number zero being green introduces a <a href="https://en.wikipedia.org/wiki/Casino_game#House_advantage">house edge</a>. There are 18 red and 18 black and one green number. When betting on a color, if the ball ends up on zero (which has 1/37 odd of occuring) neither red or black bets wins and the house get all those bets back.
+The <a href="https://en.wikipedia.org/wiki/Expected_value">expected value</a> when betting on a color is <code>1*18/37 + -1*19/37 = -0.027</code>. The house has a 2.7% edge. This means that on average a player will lose 2.6% when betting.</p>
+
+<h1 id="whatisthemartingale">What is the martingale?</h1>
+
+<p>The martingale is one of the older and simpler technique to make money at the roulette. </p>
+
+<blockquote>
+<p>Make a bet of one on a color<br/>
+if you <em>win</em>: you doubled your bet. Make a new bet of one on the other color.<br/>
+if you <em>lose</em>: double your previous bet on the same color until you win. </p>
+</blockquote>
+
+<p>Doubling after each loss allows the first victory to recover all previous losses. The only way to lose is to have a series of losses so long that you can no longer double the previous bet. This is the opposite of the usual way of playing games of chance where you take a lot of small losses hoping for a big win. With the martingale we have lots of small wins, hoping to avoid a large loss.</p>
+
+<p>The martingale relies on the fact that even if the wrong color appears multiple times in a row, the winning color will <a href="https://en.wikipedia.org/wiki/Almost_surely">almost surely</a> end up occuring. Indeed, the odds of winning each time is almost 50% (actually it is 18/37 due to the zero which always makes you lose). </p>
+
+<p>The following table shows the odds of losing multiple times in a row:</p>
+
+<table>
+<colgroup>
+<col style="text-align:center;"/>
+<col style="text-align:center;"/>
+<col style="text-align:center;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:center;">Losses in a row</th>
+	<th style="text-align:center;">odds (%)</th>
+	<th style="text-align:center;">odds (1 in)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:center;">2</td>
+	<td style="text-align:center;">26.37 %</td>
+	<td style="text-align:center;">1 in 4</td>
+</tr>
+<tr>
+	<td style="text-align:center;">4</td>
+	<td style="text-align:center;">6.95 %</td>
+	<td style="text-align:center;">1 in 14</td>
+</tr>
+<tr>
+	<td style="text-align:center;">6</td>
+	<td style="text-align:center;">1.83 %</td>
+	<td style="text-align:center;">1 in 55</td>
+</tr>
+<tr>
+	<td style="text-align:center;">8</td>
+	<td style="text-align:center;">0.48%</td>
+	<td style="text-align:center;">1 in 207</td>
+</tr>
+<tr>
+	<td style="text-align:center;">10</td>
+	<td style="text-align:center;">0.13 %</td>
+	<td style="text-align:center;">1 in 784</td>
+</tr>
+<tr>
+	<td style="text-align:center;">12</td>
+	<td style="text-align:center;">0.03 %</td>
+	<td style="text-align:center;">1 in 2974</td>
+</tr>
+<tr>
+	<td style="text-align:center;">14</td>
+	<td style="text-align:center;">0.01 %</td>
+	<td style="text-align:center;">1 in 11279</td>
+</tr>
+</tbody>
+</table>
+<p>For other values, you can use the calculator below :<br/>
+The odds of losing <input type="number" value="13" min="0" id="oddsLosingXTimes"> times in a row is <span id="oddsLosingPercent"></span> % or 1 in <span id="oddsLosingChance"></span>. </p>
+
+<p><a name="gainoneatatime"></a></p>
+
+<h2 id="gainingoneatatime">Gaining one at a time</h2>
+
+<p>With the martingale you make a profit of one every time you win even if you had to double a previous bet due to a loss. As the following table shows, no matter how many times you lost and had to double the bet, the final profit is of one unit: </p>
+
+<table>
+<colgroup>
+<col style="text-align:center;"/>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:center;">Losses in a row</th>
+	<th style="text-align:left;">Amount spent</th>
+	<th style="text-align:left;">Amount won</th>
+	<th style="text-align:left;">Net win</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:center;">1</td>
+	<td style="text-align:left;">&#8211;1</td>
+	<td style="text-align:left;">+2</td>
+	<td style="text-align:left;">=1</td>
+</tr>
+<tr>
+	<td style="text-align:center;">2</td>
+	<td style="text-align:left;">&#8211;3 (&#8211;1 &#8211;2)</td>
+	<td style="text-align:left;">+4</td>
+	<td style="text-align:left;">=1</td>
+</tr>
+<tr>
+	<td style="text-align:center;">3</td>
+	<td style="text-align:left;">&#8211;7 (&#8211;1 &#8211;2 &#8211;4)</td>
+	<td style="text-align:left;">+8</td>
+	<td style="text-align:left;">=1</td>
+</tr>
+<tr>
+	<td style="text-align:center;">4</td>
+	<td style="text-align:left;">&#8211;15 (&#8211;1 &#8211;2 &#8211;4 &#8211;8)</td>
+	<td style="text-align:left;">+16</td>
+	<td style="text-align:left;">=1</td>
+</tr>
+<tr>
+	<td style="text-align:center;">&#8230;</td>
+	<td style="text-align:left;">&#8230;</td>
+	<td style="text-align:left;">&#8230;</td>
+	<td style="text-align:left;">=1</td>
+</tr>
+</tbody>
+</table>
+<p>Since you only win one at a time, to gain a large amount of money, you will need to play a larger amount of time.</p>
+
+<h1 id="experiment">Experiment</h1>
+
+<p>To analyze the martingale, a roulette computer simulation has been embedded in this page. It works just like a real casino roulette except we have the leisure to play as much as we want without losing any real money.</p>
+
+<!-- TODO roulette simulator:
+can select money available (or start with 100 and reset)
+can select color
+can select amount bet
+button to play 
+
+    display last result
+-->
+
+<p>The winning number and color is generated randomly by our simulated wheel as randomly as a <a href="https://en.wikipedia.org/wiki/Pseudorandom_number_generator">computer number generator</a> can. It is for all intents as random as a casino wheel should be.</p>
+
+<p>To help determine if the martingale betting technique works we are going to use the <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo method</a>. We will automatically simulate a large number of attempts to make money with the martingale and see what happens.<br/>
+For each attempt we will start with a predetermined amount of money and a predetermined amount of money we want to win. <!--expressed as a percentage of the initial amount.--> We keep playing until one of two things happen:</p>
+
+<ul>
+<li>we amassed the amount of money we set ourselves to</li>
+<li>we are unable to bet the double of the previous loss due to an unlucky strike of numbers of the wrong color</li>
+</ul>
+
+<p>Let&#8217;s simulate 50 attempts, starting with 100 units, aiming to gain 20 units to achieve a total of 120 units. The following graph plots the result of those 50 attempts.<br/>
+Each dot represent an entire playing session. It is as if for each dot we had been to a casino and played until we came out a happy and richer person or a bitter loser. This graph has been generated dynamically using the embedded simulation. If you refresh the page you will get another set of results.</p>
+
+<!-- 
+![](martingales1.2x.png)
+-->
+
+<p><iframe scrolling="no" style="display: block; float: left; border: none; overflow: hidden;" width="100%" height="350" src="scattermartingale.html?hideControls=1&initial=100&goal=120"></iframe></p>
+
+<p>As you can see, when starting with 100 and trying to gain an additional 20 units, we win most, but not all of the time. An important aspect to notice is that when we win, we win a little (20) but when we lose, we lose a lot (around 50).</p>
+
+<h2 id="uppingtheante">Upping the ante</h2>
+
+<p>Here is another chart, it is set with the same initial amount (100) but this time we want to double it, ending up with 200. As the chart reveals, with these parameters we only manage to double our capital a few times and lose most of the time. </p>
+
+<!-- 
+![](martingales2x.png)
+-->
+
+<p><iframe scrolling="no" style="display: block; float: left; border: none; overflow: hidden;" width="100%" height="350" src="scattermartingale.html?initial=100&goal=200"></iframe></p>
+
+<p>You can adjust the parameters above to run the simulator and perform your own experiments.</p>
+
+<p>There are two ways to influence the likelihood of victory: after how long you stop and the initial amount of money you possess :</p>
+
+<ul>
+<li>The longer you play the higher the odds of losing. Another way of saying this : the more you want to win, the higher the risks of losing.<br/>
+Try setting a higher goal and observe the effect. The more you aim to win, the more likely you are to fail. On the contrary, the less you aim to win, the more likely you are to succeed.</li>
+<li>The higher the initial amount of money available, the more likely you are to succeed. This is because more money allows you to overcome longer losing strikes. For example if you want to gain 100 more units than you started with, you are much more likely to achieve this goal if you have 1000 units to start with than if you only had 100.<br/>
+Set the initial amount to 100 and the goal to 200. Notice the low number of successfull attempts. Now set the initial amount to 1000 and the goal to 1100. There are few if any unsuccessfull attempts but each of those failure result in a large loss of money.</li>
+</ul>
+
+<p><a name="averageReturn"></a></p>
+
+<h2 id="averagereturn">Average return</h2>
+
+<p>The martingale attempts sometimes succeed and sometimes fail. A varying amount of money is made or lost for each of those attempts, but on average how much money is made? If on average we make more money than the initial bet it would mean that we beat the <a href="#houseEdge">house edge</a> of the casino. </p>
+
+<p>This question can be answered experimentally using the roulette simulator. By playing a large number of martingales and averaging the results it will be possible to estimate how much money is made on average. </p>
+
+<p>The following test runs 100,000 martingales with the parameters defined and return the average of all the results: </p>
+
+<p>When starting with <input type="number" value="100" min="0" max="1000" id="averageStarting"> and attempting to gain <input type="number" value="20" min="0" max="500" id="averageGain"></span>, the average result is <span id="averageResult">97.06788</span>. </p>
+
+<p>Be careful not to select values too large as it would slow your browser down. The resulting number will be slightly different between multiple execution due to the experimental nature of the number. A more accurate result could be obtained but it would require more computation and slow your browser down.</p>
+
+<p>As you can see the average result is always slightly less than the starting amount.</p>
+
+<p><strong>On average, the money remaining after a martingale is less than at the start!</strong></p>
+
+<!-- TODO distribution chart-->
+
+<h1 id="successprobability">Success Probability</h1>
+
+<p>Just how likely is it to win using the martingale? As shown by the previous section, the probability of success depends on the starting amount as well as the amount of profit desired.</p>
+
+<p>Let&#8217;s compute the actual odds of winning and display them using graphs. The graphs below are not obtained through simulation, these are the actual odds of winning the roulette using the martingale. Again, success is defined as gaining a predetermined amount of money while losing is defined as being unable to double a bet after a loss at some point.</p>
+
+<p>The following chart displays the odds of winning at the roulette using the martingale when starting with 100. The horizontal axis represents the desired profits. The vertical axis is the probability of success. </p>
+
+<p><iframe style="display: block; float: left; border: none; overflow: hidden" width="100%" height="450px" src="winningoddsmartingale.html?initial=100&gains=0,40,80,120,160,200"></iframe></p>
+
+<p>You can modify the graph by chosing your own initial value and gains. Separate the values by a comma.</p>
+
+<p>As expected there is 100% percent chances of gaining 0 additional units: by not playing at all.<br/>
+The more you hope to gain the less your chances of success. The reason being that the more you play, the higher the risks of getting an unlucky strike of numbers of the wrong colors. Gaining 25 has a 62% probability of success, gaining 50 less than 50%, gaining 100 30% and gaining 200 less than 15%.
+The following graph shows the odds of winning a larger amount of money. Up to 10 times the initial amount.</p>
+
+<p><iframe style="display: block; float: left; border: none; overflow: hidden" width="100%" height="450px" src="winningoddsmartingale.html?hideControls&initial=100&gains=0,25,50,100,200,300,400,500,600,700,800"></iframe></p>
+
+<p>The probability of winning at the roulette using the martingale follows the characteristic shape of a <a href="https://en.wikipedia.org/wiki/Power_law">Power law</a>. This means that odds of winning decline exponentially with the duration of the game.</p>
+
+<p><strong>The probability of winning become negligeable when you want to win a large amount!</strong></p>
+
+<h1 id="whydoesntthemartingalework">Why doesn&#8217;t the martingale work?</h1>
+
+<p>The only way to lose using the martingale is to have a series of failures long enough so that you can no longer afford to double the previous bet. The question is, will such a series occur?</p>
+
+<p>Three facts:</p>
+
+<ol>
+<li>since the money you have is limited,
+ <strong>the number of times you can lose in a row is limited</strong></li>
+<li>since you only win money <a href="#gainoneatatime">1 unit at a time</a>, you <strong>need to play a lot</strong> to make decent gains</li>
+<li><strong>a long losing strike is unlikely&#8230; unless you play a long time, in which case it is almost guaranteed to happen!</strong></li>
+</ol>
+
+<p>Each individual attempt to win appears low-risk but you will periodically experience a long series of failures in a row. This is called a <a href="https://en.wikipedia.org/wiki/Taleb_distribution">Taleb Distribution</a>: Steady returns that appear low risk but which experiences periodical catastrophic events.</p>
+
+<h2 id="howlikelyisittobeunlucky">How likely is it to be unlucky?</h2>
+
+<p>There is less than 2 percent chance of red (or green) appearing 6 times in a row. Unlikely to happen. Unlikely if you only bet once that is. If you keep playing, a series of 6 red will happen sooner or later. How many times do you have to play before it is more likely for it to happen than not? 10 times? 50 times? 100 times? The answer 38. After 38 times there is 50% chances that you will have encountered 6 red in a row. </p>
+
+<p><a href="http://wizardofodds.com/image/ask-the-wizard/streaks.pdf">Psychology studies</a> have shown that when people realize that the odds of losing 6 times in a row are low when playing a few times, they then incorrectly assume that in a long string of play the odds are also low.
+It&#8217;s a mistake of thinking that if a series of red/red/red/red happens then the next color is more likely to be black to compensate. This is known as the <a href="https://en.wikipedia.org/wiki/Gambler%27s_fallacy">Gambler&#8217;s fallacy</a>. It&#8217;s a quirk of how our human brain work.</p>
+
+<!--
+-Erreur du parieur
+    si quelque chose d'improbable se produit, les tirages suivants vont compenser
+    ex.: noir, noir, noir, noir -> suivant sera rouge!
+    http://fr.wikipedia.org/wiki/Erreur_du_parieur
+    http://jos26.com/2012/01/casinos/martingale-empechez-aux-casinos-de-detecter-votre-facon-de-joue\
+r/
+
+-human tendency to think in term of luck. lucky strike,...
+ online casino cheat: not random, detect and make me lose!
+    cf how likely being unlucky kdice
+-->
+
+<p>Here is a table showing for various length of consecutive losses, the number of times you have to play before there is a greater than 50% chances of it happening and the minimum amount of money needed to still be able to play if it happens.
+<!--
+(19/37)^6
+
+(1-(19/37)^6)
+
+(1-(19/37)^6)^38
+
+odds of losing 6 times in a row, when playing 3 times
+=
+odds of losing the first time + 
+odds of winning first time and losing second time +
+odds of winning first and second time and losing third time
+=
+(19/37)^6 + (1-(19/37)^6) * (19/37)^6 + (1-(19/37)^6) * (1-(19/37)^6) * (19/37)^6
+
+
+=
+1 - odds of not losing 6 times in a row, when playing three times
+=
+1- (1-(19/37)^6)^3
+=
+
+--></p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Losses in a row</th>
+	<th style="text-align:left;">Times before &gt; 50%</th>
+	<th style="text-align:left;">Bankroll needed</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">3</td>
+	<td style="text-align:left;">5</td>
+	<td style="text-align:left;">7</td>
+</tr>
+<tr>
+	<td style="text-align:left;">4</td>
+	<td style="text-align:left;">10</td>
+	<td style="text-align:left;">15</td>
+</tr>
+<tr>
+	<td style="text-align:left;">5</td>
+	<td style="text-align:left;">20</td>
+	<td style="text-align:left;">31</td>
+</tr>
+<tr>
+	<td style="text-align:left;">6</td>
+	<td style="text-align:left;">38</td>
+	<td style="text-align:left;">63</td>
+</tr>
+<tr>
+	<td style="text-align:left;">7</td>
+	<td style="text-align:left;">74</td>
+	<td style="text-align:left;">127</td>
+</tr>
+<tr>
+	<td style="text-align:left;">8</td>
+	<td style="text-align:left;">144</td>
+	<td style="text-align:left;">255</td>
+</tr>
+</tbody>
+</table>
+<p>As a rough rule of thumb, you have more than 50% chances of losing your money if you try to win 50% of your initial available amount. Keep playing and you&#8217;ll be certain to lose your money.</p>
+
+<!-- -how likely is it to be unlucky?
+    with x amount of money can do y attempts before losing it all
+    how likely is it to lose y times starting with x amount?
+    (dynamic table here)
+    1 chance in x to lose! how likely is it?
+    http://kdice.wikispaces.com/Random+in+kdice
+
+
+-->
+
+<!--
+TODO finish this
+#Maximizing the odds of success when using Martingale
+
+##Optimal Initial amount of money
+
+The choice of the initial amount of money to play with affects the number of times it is possible to double a bet after multiple losses. This choice can have a significant impact.
+
+For example look at the following chart of success probabilities.
+
+
+<iframe style="display: block; float: left; border: none; overflow: hidden" width="100%" height="450px" src="winningoddsmartingale.html?initial=117,119,121,123,125,127,129&gains=10,40,80,120"></iframe>
+TODO winning odds chart with multiple series
+eg around 127
+TODO reprendre martingale taux succes115_129.png (win rate!)
+
+Each line represent a different starting amount. The odds changes depending on the starting amount because it affects the length of consecutive losses that can be handled.
+
+For example playing 7 times in a row require `1+2+4+8+16+32+64` = 127 units. A smaller bankroll, of even one less unit, means you cannot play 7 times. A larger bankroll still only allows you to play 7 times; until you hit 255, which allows to play 8 times in a row.
+
+Over time 
+
+The following tables shows how much you need to be able to 
+
+step function.
+
+effect bigger when starting to play
+
+initial money to be able to lose x times in a row, right from the start : 2^(x-1)
+
+-->
+
+<h1 id="riskingmoretoincreasechancesofsuccess">Risking more to increase chances of success</h1>
+
+<p>The following probability chart confirms that the odds of winning increase when you have a larger amount of money available.</p>
+
+<p><iframe style="display: block; float: left; border: none; overflow: hidden" width="100%" height="450px" src="winningoddsmartingale.html?initial=100,200,300,500&gains=0,50,100,200,300,400,500"></iframe></p>
+
+<p>Indeed, a larger bankroll means that when a series of numbers of the wrong color occurs, you can double the bets you make longer. So, does this mean that if you were a millionaire you could fleece casinos by using the martingale technique at the roulette? The answer is no.</p>
+
+<p>First, the amount of money you need to be able to cope with longer series of failures grows very quickly. It grows <a href="https://en.wikipedia.org/wiki/Quadratic_growth">quadratically</a>.<br/>
+<!--The amount of money you need o be able to play (and lose) `X` times in a row is `2^X - 1`.-->
+Simply put it means that if you want to be able to lose one more time you need twice the money. It may not seem like much but this makes the amounts of money you need quickly grow out of control. For example you only need 31 to be able to play 5 times in a row. To play 10 times in a row, you need 1023. To play 15 times in a row you need 32767. The ability to play 20 times already requires more than 1 million. The numbers after that get obscene.<br/>
+The only way to be sure to win would be to have infinitely big pockets (and casinos accepting infinitely big bets).
+<!--put story of chess gold
+> The legend goes that when the game of chess was invented, the ruling king was so pleased that he let its inventor chose his own reward. The man said that he simply wanted wanted
+--></p>
+
+<p>Second, while more money increase the odds it also increases the losses when they do occur. No matter how large the initial bet is, the <a href="#averageReturn">average return</a> is still negative. Remember that if you lose the losses can be way higher than when you win. For example if you set to win 10% of your initial investment, you may win the 10% or you could potentially lose 100% of your money.</p>
+
+<p>Third, the more money you have the more money you&#8217;ll want to win. It is naive to think: <em>&#8216;I only have 100 to play with. My chances of doubling that money are low. If only I had 10000 I would be able to make 100 almost certainly!&#8217;</em>.<br/>
+While the odds of winning 100 when starting with 100000 are high, it is unlikely you&#8217;d bother playing for so little. When playing you are more likely to want to win a significant percentage of your initial bet. When you set out to win 50%, 100% or more of your initial amount, the odds of winning are bad, no matter the initial amount. </p>
+
+<!--Also, as explained in a later section, with the martingale, you only win 1 unit at a time. Gaining any significant amount would take a long long time.-->
+
+<h1 id="ausefuluseofmartingale">A useful use of martingale</h1>
+
+<p>While the martingale is not a sure-fire way to make lots money at the roulette we still can use it to our advantage. </p>
+
+<p>Betting on a color at the roulette has a 50% chances of being successfull (18/37 actually). Using the martingale, we can <strong>turn the roulette from 50/50 odds game into a game which gives whatever chances of success we desire.</strong> With a given starting amount and percentage of success, we can calculate how long we can play and still have the desired percentage of success.</p>
+
+<p>For example if we have 100 to play with and we want 80% chances of winning, we must play until we possess 112. Anymore than that and the odds of losing would be higher. At 115 the odds are of 75% and by 150 they are lower than 50%.</p>
+
+<p>You can use the success probability chart to determine how much you can play to retain a certain percentage off success.
+<!-- todo if time: calculator
+TODO calculator
+can select initial money
+can select odds of winning in %
+gives the amount of money to win
+
+TODO You can also use the Success probability chart in this page.
+--></p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>The martingale seems attractive due to its perceived ability to prevent losses but it is an illusion. Using the martingale you <em>will</em> end up losing. It&#8217;s a matter of time</p>
+
+<h1 id="">&#8212;</h1>
+
+<h1 id="faq">FAQ</h1>
+
+<h2 id="cantijustplayonceinawhilewithmodestgoals">Can&#8217;t I just play once in a while with modest goals?</h2>
+
+<p>Since playing with modest gains has high chances of success it might seem like a good idea to play a little at multiple occasions, enjoying high chances of success each time.
+However this does not work. Even if each individual session has low odds of failure, if you keep playing you will sooner or later end up losing; wiping out previous gains in the process. Another way of understanding this is that playing a little multiple times turns into the equivalent of playing a lot once.</p>
+
+<!--
+-argument: 'it works but don't do it too much'-> if it works, it works.
+    Why wouldn't you give up your job and make easy money?
+-->
+
+<h2 id="isitreallynotpossibletobeatthecasino">Is it really not possible to beat the casino?</h2>
+
+<p>Making money reliably at the roulette <em>is</em> possible in some curcumstances. Several people successfully did it over the years. Finding a wheel with bias towards certain numbers, using the laws of physics and a machine to compute where the ball would end up,&#8230; Cheating excepted, every case involved finding find a way to detect some kind of bias in order to reverse the <a href="https://en.wikipedia.org/wiki/Casino_game#House_advantage">house edge</a> in the favour of the player.</p>
+
+<h2 id="caniusethemartingaleusingabetdifferentthanacolor">Can I use the martingale using a bet different than a color?</h2>
+
+<p>The martingale is typically described as chosing a color and keep betting on this color after each loss (while doubling the bet) until a win. In reality the color chosen each time makes no difference at all. Whether you pick red or black, the odds of winning always are 18/37. Picking black and hoping that a long series of red/red/red/&#8230; won&#8217;t occur is just as good of a strategy as picking black/red/black/&#8230; and hoping that a long series of red/black/red/&#8230; won&#8217;t happen. </p>
+
+<p>Old statistician (unfunny) joke: A man says to a statistician friend, &#8217;this morning when I parked, the licence plate of the car next to mine was &#8216;aaa111&#8217;, what were the odds?! The statistician respond &#8216;This happened to me too but the licence plate of the car next to mine was ajh214!&#8217;</p>
+
+<p>When using the martingale bets other than the color could be used with: manque (between 1 and 18) or passe (between 19 and 36); even or odd. In all cases the odds are the same (18/37).</p>
+
+<!--
+-roulette variants?
+    00 american -> worse odds
+    prison/half back -> better odds (but still doesn't work)
+-->
+
+<h2 id="youonlyanalyzedonespecifictechniquecantavariantoranotherbettingtechniquework">You only analyzed one specific technique, can&#8217;t a variant or another betting technique work?</h2>
+
+<p>The martingale analyzed here is one of the many techniques aiming to make money at the roulette: grand martingale, Alembert, Pertoli, geometric bet, constant bet,&#8230; It seems that the human mind is highly imaginative when it comes to way of making money.</p>
+
+<p>While each technique could be the subject of its own article, the premise remains the same : the odds are always in the favor of the house.</p>
+
+<!--
+-other strategies (alembert,...) -> none work!
+    *2+1 (grande martingale) -> increases faster, have to give up quicker
+    start at 3 as in casinos -> increases faster
+-->
+
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+
+<script type="text/javascript" src="martingalesimulator.js"></script>
+
+<script type="text/javascript" src="martingale.js"></script>
+
+    </div>
+</body>
+</html>
