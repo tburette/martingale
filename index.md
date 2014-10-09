@@ -379,6 +379,6 @@ While each technique could be the subject of its own article, the premise remain
 
 <script type="text/javascript" src="jquery-1.11.1.js"></script>
 <script type="text/javascript" src="martingalesimulator.js"></script>
-<script type="text/javascript" src="martingale.js"></script>
+<script type="text/javascript" src="index.js"></script>
 
 
