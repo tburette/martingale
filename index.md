@@ -1,38 +1,38 @@
 #Can you make money with the Martingale?
 
-This page presents the martingale betting system for the roulette casino game. It analyzes with hard number the systems and determines whether you can reliably make money at the roulette with it.
+The martingale is a simple betting system for the roulette casino game. This page analyzes with hard number the system and determines whether you can reliably make money at the roulette with it.
 
 #What is the roulette?
 
-![](roulette.jpg)
-
 The roulette is a casino game dating back to the 17th century. A ball is rolled by the croupier into a spinning wheel and ends up into one of the 37 pockets numbered 0 to 36. Each number possesses a red or black color except the zero which is green.
 
-![](rouletteLayout.jpg)
+![](roulette.jpg)
 
 A number of bets can be made as to where the ball will end up: a specific number, a small group of related numbers, an even or odd number (pair, impair), a number between 1-18 (manque), a number between 19-36 (passe), a red or black number. The martingale uses the red or black bets exclusively.
+
+![](rouletteLayout.jpg)
 
 There exists a number of variations to this game but this article will focuses on the French roulette, also known as the European roulette. A popular variant is the American roulette with two zeros which makes your odds of winning lower. We will assume a minimum bet of 1 and no maximum. Some casino have minimum and maximum (eg.: minimum 3 and maximum 500). 
 
 
 <a name="houseEdge"></a>
-The number zero being green introduces a [house edge](https://en.wikipedia.org/wiki/Casino_game#House_advantage). There are 18 red and 18 black and one green number. When betting on a color, if the ball ends up on zero (which has 1/37 odd of occuring) neither red or black bets wins and the house get all those bets back. 
-The [expected value](https://en.wikipedia.org/wiki/Expected_value) when betting on a color is `1*18/37 + -1*19/37 = -0.027`. The house has a 2.7% edge. This means that on average a player will lose 2.6% when betting.
+The number zero being green introduces a [house edge](https://en.wikipedia.org/wiki/Casino_game#House_advantage). There are 18 red and 18 black and one green number. When betting on a color, if the ball ends up on zero (which has 1/37 chances of occuring) neither the red or black win and the house get all those bets back. 
+The [expected value](https://en.wikipedia.org/wiki/Expected_value) when betting on a color is `1*18/37 + -1*19/37 = -0.027`. The house has a 2.7% edge. This means that on average a player will lose 2.7% when betting.
 
 
 #What is the martingale?
-The martingale is one of the older and simpler technique to make money at the roulette. 
+The martingale is one of the older and simpler technique to make money at the roulette. It works like this:
 
 > Make a bet of one on a color  
 > if you _win_: you doubled your bet. Make a new bet of one on the other color.  
 > if you _lose_: double your previous bet on the same color until you win. 
 
-Doubling after each loss allows the first victory to recover all previous losses. The only way to lose is to have a series of losses so long that you can no longer double the previous bet. This is the opposite of the usual way of playing games of chance where you take a lot of small losses hoping for a big win. With the martingale we have lots of small wins, hoping to avoid a large loss.
+Doubling after each loss allows the first victory to recover all previous losses. The only way to lose is to have a series of losses so long that you can no longer double the previous bet. 
 
 
-The martingale relies on the fact that even if the wrong color appears multiple times in a row, the winning color will [almost surely](https://en.wikipedia.org/wiki/Almost_surely) end up occuring. Indeed, the odds of winning each time is almost 50% (actually it is 18/37 due to the zero which always makes you lose).  
+The martingale relies on the fact that even if the wrong color appears multiple times in a row, the winning color will [almost surely](https://en.wikipedia.org/wiki/Almost_surely) end up occuring. Indeed, the odds of winning each time is almost 50% (actually it is 18/37 due to the zero).  
 
-The following table shows the odds of losing multiple times in a row:
+The following table shows the odds of losing a certain amount of times in a row:
 
 | Losses in a row | odds (%) | odds (1 in) |
 |:---------------:|:--------:|:-----------:|
@@ -62,12 +62,13 @@ With the martingale you make a profit of one every time you win even if you had 
 |  4                | -15 (-1 -2 -4 -8) | +16        | =1      |
 |       ...         |        ...        |     ...    | =1      |
 
-Since you only win one at a time, to gain a large amount of money, you will need to play a larger amount of time.
+Since you only win one at a time, to gain a large amount of money, you will need to play a larger amount of time. This is the opposite of the usual way of playing games of chance where you take a lot of small losses hoping for a big win. With the martingale we have lots of small wins, hoping to avoid a large loss.
 
 
 #Experiment
 
-To analyze the martingale, a roulette computer simulation has been embedded in this page. It works just like a real casino roulette except we have the leisure to play as much as we want without losing any real money.
+To analyze the martingale, a roulette computer simulation has been embedded in this page. It works just like a real casino roulette except we have the leisure to play as much as we want without losing any real money. The winning number and color is generated randomly by our simulated wheel as randomly as a [computer number generator](https://en.wikipedia.org/wiki/Pseudorandom_number_generator) can. It is for all intents as random as a casino wheel should be.
+
 
 <!-- TODO roulette simulator:
 can select money available (or start with 100 and reset)
@@ -78,7 +79,6 @@ button to play
     display last result
 -->
 
-The winning number and color is generated randomly by our simulated wheel as randomly as a [computer number generator](https://en.wikipedia.org/wiki/Pseudorandom_number_generator) can. It is for all intents as random as a casino wheel should be.
 
 
 To help determine if the martingale betting technique works we are going to use the [Monte Carlo method](https://en.wikipedia.org/wiki/Monte_Carlo_method). We will automatically simulate a large number of attempts to make money with the martingale and see what happens.  
@@ -87,8 +87,7 @@ For each attempt we will start with a predetermined amount of money and a predet
 - we amassed the amount of money we set ourselves to
 - we are unable to bet the double of the previous loss due to an unlucky strike of numbers of the wrong color
 
-Let's simulate 50 attempts, starting with 100 units, aiming to gain 20 units to achieve a total of 120 units. The following graph plots the result of those 50 attempts.  
-Each dot represent an entire playing session. It is as if for each dot we had been to a casino and played until we came out a happy and richer person or a bitter loser. This graph has been generated dynamically using the embedded simulation. If you refresh the page you will get another set of results.
+Let's simulate 50 attempts, starting with 100, aiming to gain 20 to achieve a total of 120. The following graph plots the result of those 50 attempts. Each dot represent an entire playing session. It is as if for each dot we had been to a casino and played until we came out a happy and richer person or a bitter loser. This graph has been generated dynamically using the embedded simulation. If you refresh the page you will get another set of results.
 
 <!-- 
 ![](martingales1.2x.png)
@@ -151,6 +150,7 @@ You can modify the graph by chosing your own initial value and gains. Separate t
 
 As expected there is 100% percent chances of gaining 0 additional units: by not playing at all.  
 The more you hope to gain the less your chances of success. The reason being that the more you play, the higher the risks of getting an unlucky strike of numbers of the wrong colors. Gaining 25 has a 62% probability of success, gaining 50 less than 50%, gaining 100 30% and gaining 200 less than 15%. 
+
 The following graph shows the odds of winning a larger amount of money. Up to 10 times the initial amount.
 
 <iframe style="display: block; float: left; border: none; overflow: hidden" width="100%" height="450px" src="winningoddsmartingale.html?hideControls&initial=100&gains=0,25,50,100,200,300,400,500,600,700,800"></iframe>
@@ -176,7 +176,7 @@ Each individual attempt to win appears low-risk but you will periodically experi
 
 ##How likely is it to be unlucky?
 
-There is less than 2 percent chance of red (or green) appearing 6 times in a row. Unlikely to happen. Unlikely if you only bet once that is. If you keep playing, a series of 6 red will happen sooner or later. How many times do you have to play before it is more likely for it to happen than not? 10 times? 50 times? 100 times? The answer 38. After 38 times there is 50% chances that you will have encountered 6 red in a row.  
+There is less than 2 percent chance of red (or green) appearing 6 times in a row. Unlikely to happen. Unlikely if you only bet once that is. If you keep playing, a series of 6 red will happen sooner or later. How many times do you have to play before it is more likely for it to happen than not? 10 times? 50 times? 100 times? The answer 38. If you watch 38 spins at a roulette, you will have 50% chances of witnessing 6 red in a row.  
 
 
 [Psychology studies](http://wizardofodds.com/image/ask-the-wizard/streaks.pdf) have shown that when people realize that the odds of losing 6 times in a row are low when playing a few times, they then incorrectly assume that in a long string of play the odds are also low. 
@@ -223,15 +223,19 @@ odds of winning first and second time and losing third time
 
 | Losses in a row | Times before > 50% | Bankroll needed |
 |-----------------|--------------------|-----------------|
-| 3               | 5                  | 7               |
-| 4               | 10                 | 15              |
-| 5               | 20                 | 31              |
-| 6               | 38                 | 63              |
-| 7               | 74                 | 127             |
-| 8               | 144                | 255             |
+| 3               | 5                  | 15              |
+| 4               | 10                 | 31              |
+| 5               | 20                 | 63              |
+| 6               | 38                 | 127             |
+| 7               | 74                 | 255             |
+| 8               | 144                | 511             |
+| 9               | 279                | 1023            |
+| 10              | 544                | 2047            |
 
 
 As a rough rule of thumb, you have more than 50% chances of losing your money if you try to win 50% of your initial available amount. Keep playing and you'll be certain to lose your money.
+
+Losing a martingale has nothing to do with being an unlucky person, the casino cheating or being the victim of a hugely unlikely event. If you play long enough, it becomes extremely suprising  to __not__ lose.
 
 <!-- -how likely is it to be unlucky?
     with x amount of money can do y attempts before losing it all
@@ -284,7 +288,7 @@ The following probability chart confirms that the odds of winning increase when 
 
 <iframe style="display: block; float: left; border: none; overflow: hidden" width="100%" height="450px" src="winningoddsmartingale.html?initial=100,200,300,500&gains=0,50,100,200,300,400,500"></iframe>
 
-Indeed, a larger bankroll means that when a series of numbers of the wrong color occurs, you can double the bets you make longer. So, does this mean that if you were a millionaire you could fleece casinos by using the martingale technique at the roulette? The answer is no.
+A larger bankroll means you can afford to double your previous bets longer. So, does this mean that if you were a millionaire you could fleece casinos by using the martingale technique at the roulette? The answer is no.
 
 First, the amount of money you need to be able to cope with longer series of failures grows very quickly. It grows [quadratically](https://en.wikipedia.org/wiki/Quadratic_growth).  
 <!--The amount of money you need o be able to play (and lose) `X` times in a row is `2^X - 1`.-->
@@ -335,8 +339,8 @@ The martingale seems attractive due to its perceived ability to prevent losses b
 
 ##Can't I just play once in a while with modest goals?
 
-Since playing with modest gains has high chances of success it might seem like a good idea to play a little at multiple occasions, enjoying high chances of success each time. 
-However this does not work. Even if each individual session has low odds of failure, if you keep playing you will sooner or later end up losing; wiping out previous gains in the process. Another way of understanding this is that playing a little multiple times turns into the equivalent of playing a lot once.
+Since stopping early  with modest gains has high chances of success it might seem like a good idea to play a little at multiple occasions, enjoying high chances of success each time. 
+However this does not work. Even if each individual session has low odds of failure, if you keep playing sessions, one of them will sooner or later end up in a failure; wiping out previous gains in the process. Another way of understanding this is that playing a little multiple times is equivalent to playing a lot once.
 
 <!--
 -argument: 'it works but don't do it too much'-> if it works, it works.
@@ -345,7 +349,8 @@ However this does not work. Even if each individual session has low odds of fail
 
 ##Is it really not possible to beat the casino?
 
-Making money reliably at the roulette _is_ possible in some curcumstances. Several people successfully did it over the years. Finding a wheel with bias towards certain numbers, using the laws of physics and a machine to compute where the ball would end up,... Cheating excepted, every case involved finding find a way to detect some kind of bias in order to reverse the [house edge](https://en.wikipedia.org/wiki/Casino_game#House_advantage) in the favour of the player.
+Making money reliably at the roulette _is_ possible in some curcumstances. Several group of people successfully have been able to reliably make money without outright cheating.  
+Finding a wheel with bias towards certain numbers, using the laws of physics and a machine to compute where the ball would end up,... Every case involved finding  some kind of bias in a roulette in order to reverse the [house edge](https://en.wikipedia.org/wiki/Casino_game#House_advantage) in the favour of the player.
 
 
 ##Can I use the martingale using a bet different than a color?
@@ -366,7 +371,7 @@ When using the martingale bets other than the color could be used with: manque (
 
 ##You only analyzed one specific technique, can't a variant or another betting technique work?
 
-The martingale analyzed here is one of the many techniques aiming to make money at the roulette: grand martingale, Alembert, Pertoli, geometric bet, constant bet,... It seems that the human mind is highly imaginative when it comes to way of making money.
+The martingale analyzed here is one of the many techniques aiming to make money at the roulette: grand martingale, Alembert, Pertoli, geometric bet, constant bet,... The human mind is highly imaginative when it comes to making money.
 
 While each technique could be the subject of its own article, the premise remains the same : the odds are always in the favor of the house.
 
@@ -380,5 +385,3 @@ While each technique could be the subject of its own article, the premise remain
 <script type="text/javascript" src="jquery-1.11.1.js"></script>
 <script type="text/javascript" src="martingalesimulator.js"></script>
 <script type="text/javascript" src="index.js"></script>
-
-
