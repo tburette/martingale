@@ -1,6 +1,6 @@
-#Can you make money with the Martingale?
+#Can you make money with the martingale?
 
-The martingale is a simple betting system for the roulette casino game. This page analyzes with hard number the system and determines whether you can reliably make money at the roulette with it.
+The martingale is a simple betting system for the roulette casino game. This page analyzes with hard numbers the martingale system and determines whether you can reliably make money at the roulette with it.
 
 #What is the roulette?
 
