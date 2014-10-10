@@ -71,7 +71,7 @@ function oddsSuccess(initialMoney, gained){
 
 function oddsSuccessExperimental(initialMoney, gained){
     var attempts = 50000;
-    var martingales = range(attempts).map(function(){
+    var martingales = _.range(attempts).map(function(){
 	return martingale(initialMoney, initialMoney + gained);
     });
     return martingales.filter(function(r){return r >= initialMoney+gained;}).length / attempts;
@@ -79,28 +79,10 @@ function oddsSuccessExperimental(initialMoney, gained){
 
 function averageReturn(initialMoney, gained){
     var attempts = 100000;
-    var martingales = range(attempts).map(function(){
+    var martingales = _.range(attempts).map(function(){
 	return martingale(initialMoney, initialMoney + gained);
     });
     return martingales.reduce(function(x, y){return x+y;}) / attempts;
 }
 
 
-
-//from http://underscorejs.org/ 
-function range(start, stop, step) {
-    if (arguments.length <= 1) {
-      stop = start || 0;
-      start = 0;
-    }
-    step = step || 1;
-
-    var length = Math.max(Math.ceil((stop - start) / step), 0);
-    var range = Array(length);
-
-    for (var idx = 0; idx < length; idx++, start += step) {
-      range[idx] = start;
-    }
-
-    return range;
-};

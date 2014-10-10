@@ -90,7 +90,7 @@ function updateGraph(){
     var initial = parseInt($('#initial').val(), 10);
     var goal = Number($('#goal').val());
     if(!isNaN(initial) && initial >= 0 && !isNaN(goal) && goal >= 0)
-	graphData(range(50).map(function(){return martingale(initial, goal)}), 
+	graphData(_.range(50).map(function(){return martingale(initial, goal)}), 
 		 initial,
 		 goal);
 }
@@ -106,24 +106,6 @@ $('#initial').on('input', updateGraph);
 $('#goal').on('input', updateGraph);
 updateGraph();
 
-
-//from http://underscorejs.org/
-function range(start, stop, step) {
-    if (arguments.length <= 1) {
-      stop = start || 0;
-      start = 0;
-    }
-    step = step || 1;
-
-    var length = Math.max(Math.ceil((stop - start) / step), 0);
-    var range = Array(length);
-
-    for (var idx = 0; idx < length; idx++, start += step) {
-      range[idx] = start;
-    }
-
-    return range;
-};
 
 //from http://stackoverflow.com/a/1099670/956723
 function getQueryParams(qs) {
