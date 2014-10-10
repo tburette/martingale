@@ -7,13 +7,18 @@ The martingale is a simple betting system for the roulette casino game. This pag
 The roulette is a casino game dating back to the 17th century. A ball is rolled by the croupier into a spinning wheel and ends up into one of the 37 pockets numbered 0 to 36. Each number possesses a red or black color except the zero which is green.
 
 ![](roulette.jpg)
+</br>
+<span style="font-size: 70%;"> <a href="https://creativecommons.org/licenses/by/2.0/" style="color: inherit">CC 2.0</a> <a href="https://www.flickr.com/photos/cmogle/3526750763/" style="color:inherit">Conor Ogle</a> </span>
+
 
 A number of bets can be made as to where the ball will end up: a specific number, a small group of related numbers, an even or odd number (pair, impair), a number between 1-18 (manque), a number between 19-36 (passe), a red or black number. The martingale uses the red or black bets exclusively.
 
 ![](rouletteLayout.jpg)
+</br>
+<span style="font-size: 70%;"> <a href="http://creativecommons.org/licenses/by-sa/3.0/" style="color: inherit">CC sa 3.0</a> <a href="https://en.wikipedia.org/wiki/File:French_Layout-Single_Zero_Wheel.jpg" style="color:inherit">Ron Shelley</a> </span>
+
 
 There exists a number of variations to this game but this article will focuses on the French roulette, also known as the European roulette. A popular variant is the American roulette with two zeros which makes your odds of winning lower. We will assume a minimum bet of 1 and no maximum. Some casino have minimum and maximum (eg.: minimum 3 and maximum 500). 
-
 
 <a name="houseEdge"></a>
 The number zero being green introduces a [house edge](https://en.wikipedia.org/wiki/Casino_game#House_advantage). There are 18 red and 18 black and one green number. When betting on a color, if the ball ends up on zero (which has 1/37 chances of occuring) neither the red or black win and the house get all those bets back. 
