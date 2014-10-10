@@ -14,11 +14,11 @@ function oddsLosingUpdate(){
     }
     var number = parseInt($('#oddsLosingXTimes').val(), 10);
     if(isNaN(number) || number < 0){
-	$('#oddsLosingPercent').text("");
+    	$('#oddsLosingPercent').text("");
     	$('#oddsLosingChance').text("");
     }else{
     	$('#oddsLosingPercent').text(percentageToString(oddsLosingPercent(number)));
-//    	$('#oddsLosingChance').text(oddsLosingChance(number));
+    	$('#oddsLosingChance').text(oddsLosingChance(number));
     }
 }
 
